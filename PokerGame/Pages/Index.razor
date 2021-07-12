@@ -1,0 +1,73 @@
+﻿@page "/"
+@using PokerGame.Enums
+@using PokerGame.Models
+
+@if(GameStarted) {
+  <div class="game-wrapper">
+    <a href="https://github.com/ScottMGitHub/PokerGame" class="header-navigation-github" target="_blank" rel="noreferrer">
+      <img src="assets/GitHub-Mark-32px.png" alt="github logo"/>
+    </a>
+    <h1>Texas Hold 'em Game </h1>
+    <div class="game-controls-wrapper">
+      <GameControls 
+        NewGame="NewGame" 
+        CallGame="CallGame"
+        GameState="Game.State" />
+    </div>
+    <div class="community-wrapper">
+      <h3>Community cards</h3>
+      <div class="community-card-wrapper">
+        @foreach(var card in Game.CommunityCards) {  
+          <PokerCard Card="card" />  
+        }
+      </div>
+      @if(Game.State == GameState.NewGame) {
+        <button @onclick="DealFlop">Deal Flop</button>
+      }
+      @if(Game.State == GameState.FlopDealt) {
+        <button @onclick="DealTurn">Deal Turn</button>
+      }
+      @if(Game.State == GameState.TurnDealt) {
+        <button @onclick="DealRiver">Deal River</button>
+      }
+    </div>
+    <div class="players-wrapper">
+      @foreach(var player in Game.Players){
+        <PokerPlayer Player="player" GameState="Game.State"/>
+      }
+    </div>
+  </div>
+} else{
+  <div class="initial-load-wrapper">
+    <h1>Texas Hold 'em Game </h1>
+    <a href="https://github.com/ScottMGitHub/PokerGame" class="initial-load-wrapper-github-link" target="_blank" rel="noreferrer">
+      <img src="assets/GitHub-Mark-64px.png" alt="github logo"/>
+    </a>
+    <button @onclick="() => NewGame(4)">New Game</button>
+  </div>
+}
+@code {
+    private PokerGame.Models.Game Game {get; set;} = new();
+    private bool GameStarted {get; set;}
+
+    private void NewGame(int numberOfPlayers) {
+        Game = new PokerGame.Models.Game(numberOfPlayers);
+        GameStarted = true;
+    }
+
+    private void DealFlop() {
+      Game.DealFlop();
+    }
+
+    private void DealTurn() {
+      Game.DealTurn();
+    }
+
+    private void DealRiver() {
+      Game.DealRiver();
+    }
+    private void CallGame() {
+        Game.CallGame();
+    }
+
+}

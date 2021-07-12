@@ -1,0 +1,129 @@
+.card {
+    width: 100px;
+    height: 160px;
+    padding: 10px;
+    margin: 20px;
+    vertical-align: top;
+    background-color: #ececec;
+    box-shadow: 1px 1px 10px 1px #707070;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.card-closed {
+    width: 100px;
+    height: 160px;
+    padding: 10px;
+    margin: 20px;
+    vertical-align: top;
+    box-shadow: 1px 1px 10px 1px #707070;
+    border-radius: 5px;
+    opacity: 0.3;
+    background: 
+    linear-gradient(135deg, #010f8b 25%, transparent 25%) -10px 0/ 20px 20px, 
+    linear-gradient(225deg, #6b75d6 25%, transparent 25%) -10px 0/ 20px 20px, 
+    linear-gradient(315deg, #010f8b 25%, transparent 25%) 0px 0/ 20px 20px, 
+    linear-gradient(45deg, #6b75d6 25%, #e5e5f7 25%) 0px 0/ 20px 20px;
+    display: inline-block;
+}
+.card-closed .card-value-top,
+.card-closed .card-value ,
+.card-closed .card-value-bottom {
+    display: none;
+}
+
+/* Top */
+.card-value-top {
+    width: 100%;
+    height: 40px;
+}
+.card-value-top-rank-suit {
+    margin-left: 0;
+    text-align: center;
+    width: 20px;
+}
+
+/* middle */
+.card-value {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+}
+.rank-suit-face-card, .rank-suit-card  {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.rank-suit {
+    display: inline-block;
+}
+
+/* bottom */
+.card-value-bottom {
+    width: 100%;
+    height:40px;
+}
+.card-value-bottom-rank-suit {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: center;
+    width: 20px;
+}
+
+/* Mobile card  */
+@media (max-width: 700px) {
+    .card {
+        width: 70px;
+        height: 110px;
+        padding: 5px;
+        margin: 5px;
+    }
+    .card-closed {
+        width: 70px;
+        height: 110px;
+        padding: 5px;
+        margin: 5px;
+    }
+    
+    /* Top */
+    .card-value-top {
+        width: 100%;
+        height: 25px;
+    }
+    .card-value-top-rank-suit {
+        margin-left: 0;
+        text-align: center;
+        width: 20px;
+    }
+
+    /* middle */
+    .card-value {
+        width: 100%;
+        height: 60px;
+        text-align: center;
+    }
+    .rank-suit-face-card, .rank-suit-card  {
+        text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .rank-suit {
+        display: inline-block;
+        height: 10px;
+    }
+
+    /* bottom */
+    .card-value-bottom {
+        width: 100%;
+        height: 25px;
+    }
+    .card-value-bottom-rank-suit {
+        margin-right: 0;
+        margin-left: auto;
+        text-align: center;
+        width: 20px;
+    }
+}
+

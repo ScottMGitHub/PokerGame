@@ -1,0 +1,22 @@
+@using PokerGame.Enums
+@using PokerGame.Models
+
+<div class="player-wrapper player-@((Player.Number.ToString()))">
+    <h5>Player @Player.Number.ToString() <strong>@(Player.HasWinningHand ? " - WINNER !" : "")
+      @(GameState == GameState.Called && Player.HighestHand != null ? (PokerGame.Enums.HandType)Player.HighestHand.HandType : "")
+    </strong></h5>
+    <div class="player-card-wrapper">
+      @foreach (var card in Player.Cards) {
+        <PokerCard Card="card" />                        
+      }
+    </div>   
+</div>
+@code {
+
+    [Parameter]
+    public Player Player {get; set;}
+
+    [Parameter]
+    public GameState GameState {get; set;}
+
+}

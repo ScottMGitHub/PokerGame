@@ -1,0 +1,40 @@
+@using PokerGame.Models
+@* @using GEmojiSharp.Blazor *@
+
+<div class="@(Card.CardOpen ? "card" : "card-closed")" >
+    <div class="card-value-top">
+        <div class="card-value-top-rank-suit">
+            <RankImage IsRedCard="Card.IsRedCard" Rank="Card.Rank"/>
+            <SuitImage Suit="Card.Suit"/>
+        </div>
+    </div>
+    <div class="card-value">
+        @if(Card.IsFaceCard) {
+            <div class="rank-suit-face-card">
+                <RankImage IsRedCard="Card.IsRedCard" LargeImage="true" Rank="Card.Rank"/>
+            </div> 
+        } else {
+            <div class="rank-suit-card">
+                @for (int i = 0; i < (int)Card.Rank; i++)
+                {    
+                    if(i != 0 && i % 3 == 0) { <br/> }
+                    <div class="rank-suit">
+                        <SuitImage Suit="Card.Suit"/>
+                    </div> 
+                }
+            </div>
+        }
+    </div>
+    <div class="card-value-bottom">
+        <div class="card-value-bottom-rank-suit">
+            <RankImage IsRedCard="Card.IsRedCard" Rank="Card.Rank"/>
+            <SuitImage Suit="Card.Suit"/>
+        </div>
+    </div>
+</div>
+@code {
+
+    [Parameter]
+    public Card Card {get; set;}
+
+}

@@ -1,0 +1,54 @@
+@using PokerGame.Models
+
+<div class="@(IsRedCard ? "red-card" : "black-card")">
+    @switch (Rank)
+    {
+        case PokerGame.Enums.CardRank.Ace:
+            <div class="@(LargeImage ? "ace-rank-face-card" : "standard-rank")">A</div>
+        break;
+
+        case PokerGame.Enums.CardRank.King:
+            <img
+                class="@(LargeImage ? "large-emoji" : "emoji")"
+                title="King" 
+                alt="King" 
+                src="assets/king.png" 
+                align="absmiddle"/>
+        break;
+        
+        case PokerGame.Enums.CardRank.Queen:
+            <img 
+                class="@(LargeImage ? "large-emoji" : "emoji")"
+                title="Queen" 
+                alt="Queen" 
+                src="assets/queen.png" 
+                align="absmiddle"/>
+        break;
+        
+        case PokerGame.Enums.CardRank.Jack:
+            <img 
+                class="@(LargeImage ? "large-emoji" : "emoji")"
+                title="Jack" 
+                alt="Jack" 
+                src="assets/jack.png" 
+                align="absmiddle"/>
+        break;
+
+        default:
+            <div class="standard-rank">@((int)Rank)</div>
+        break;
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public PokerGame.Enums.CardRank Rank {get; set;}
+
+    [Parameter]
+    public bool LargeImage {get; set;}
+
+    [Parameter]
+    public bool IsRedCard {get; set;}
+
+}

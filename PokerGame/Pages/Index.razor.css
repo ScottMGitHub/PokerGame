@@ -1,0 +1,88 @@
+/* Initial load wrapper */
+.initial-load-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.initial-load-wrapper h1 {
+    display: block;
+    font-size: 25px;
+    margin-left: 0;
+}
+.initial-load-wrapper a {
+    display: block;
+    margin: 20px auto;
+}
+.initial-load-wrapper button {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Game Wrapper */
+.header-navigation-github {
+    display: inline-block;
+    line-height: 32px;
+    vertical-align: middle;
+}
+h1 {
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.game-controls-wrapper {
+    display: block;
+    float: right;
+}
+.community-wrapper {
+    width: 50%;
+    min-height: 300px;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    background-color:rgba(20, 20, 20, 0.2);
+    border-radius: 25px;
+    margin-top:70px;
+}
+.community-wrapper button {
+    margin: 10px auto;
+}
+.players-wrapper {
+    text-align: center;
+    margin: auto;
+}
+
+@media (max-width: 1700px) {
+    .community-wrapper {
+        width: 60%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .community-wrapper {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .community-wrapper {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .community-wrapper {
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .game-controls-wrapper {
+        float: none;
+        top: 30px; 
+    }
+    .community-wrapper {
+        margin-top:10px;
+    }
+}

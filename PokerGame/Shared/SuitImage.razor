@@ -1,0 +1,44 @@
+@using PokerGame.Models
+@switch (Suit)
+{
+    case PokerGame.Enums.CardSuit.Hearts:
+        <img class="emoji" 
+            title="hearts" 
+            alt="hearts" 
+            src="assets/hearts.png" 
+            align="absmiddle">
+    break;
+
+    case PokerGame.Enums.CardSuit.Spades:
+        <img class="emoji" 
+            title="spades" 
+            alt="spades" 
+            src="assets/spades.png" 
+            align="absmiddle">
+    break;
+    
+     case PokerGame.Enums.CardSuit.Diamonds:
+        <img class="emoji" 
+            title="diamonds" 
+            alt="hearts" 
+            src="assets/diamonds.png" 
+            align="absmiddle">
+    break;
+    
+     case PokerGame.Enums.CardSuit.Clubs:
+        <img class="emoji" 
+            title="clubs" 
+            alt="hearts" 
+            src="assets/clubs.png" 
+            align="absmiddle">
+    break;
+
+}
+
+
+@code {
+
+    [Parameter]
+    public PokerGame.Enums.CardSuit Suit {get; set;}
+
+}

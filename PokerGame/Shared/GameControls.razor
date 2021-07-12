@@ -1,0 +1,27 @@
+@using PokerGame.Enums
+ <div class="game-controls">
+    @if(GameState != GameState.Idle && GameState != GameState.Called) {
+        <button @onclick="CallGame">Call Game</button>
+    }
+    @if(GameState == GameState.Idle || GameState == GameState.Called) {
+        <button @onclick="() => NewGameSelected(4)">New Game</button>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public GameState GameState {get; set;}
+
+    [Parameter]
+    public EventCallback<int> NewGame { get; set; }
+
+
+    [Parameter]
+    public EventCallback CallGame { get; set; }
+
+
+    private async Task NewGameSelected(int numberOfPlayers) {
+        await NewGame.InvokeAsync(numberOfPlayers);
+    }
+}

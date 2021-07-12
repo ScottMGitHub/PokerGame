@@ -1,0 +1,23 @@
+.player-wrapper {
+    display: inline-block;
+    text-align: center;
+    margin: 20px 10px;
+    padding: 10px;
+    background-color:rgba(20, 20, 20, 0.2);
+    border-radius: 25px;
+}
+h5 {
+    margin: 20px 0 0 0;
+}
+
+@media (max-width: 500px) {
+    .player-wrapper {
+        display: inline-block;
+        text-align: center;
+        margin: 20px 0;
+        width: 90%;
+        padding: 10px;
+        background-color:rgba(20, 20, 20, 0.2);
+        border-radius: 25px;
+    }
+}
