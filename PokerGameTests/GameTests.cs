@@ -81,6 +81,7 @@ namespace PokerGameTests
 		}
 
 
+
 		#endregion
 
 		#region Call Game Tie Breaker Tests - High Card
@@ -256,6 +257,116 @@ namespace PokerGameTests
 
 
 		}
+
+		[TestMethod]
+		public void CallGame_OnePairTie_Player1AceHighPairWins()
+		{
+
+			// Arrange
+			var game = new Game()
+			{
+				State = GameState.RiverDealt,
+
+				CommunityCards = new List<Card>() {
+					new Card(CardSuit.Diamonds, CardRank.Ace),
+					new Card(CardSuit.Diamonds, CardRank.Ten),
+					new Card(CardSuit.Spades, CardRank.Seven),
+					new Card(CardSuit.Spades, CardRank.Five),
+				},
+
+				Players = new List<Player>() {
+					new Player
+					{
+						Number = 1,
+						Cards = new List<Card>(){
+							new Card(CardSuit.Hearts, CardRank.Ace),
+							new Card(CardSuit.Hearts, CardRank.King),
+						}
+					},
+					new Player
+					{
+						Number = 2,
+						Cards = new List<Card>(){
+							new Card(CardSuit.Diamonds, CardRank.Ace),
+							new Card(CardSuit.Spades, CardRank.Queen),
+						}
+					},
+					new Player
+					{
+						Number = 3,
+						Cards = new List<Card>(){
+							new Card(CardSuit.Hearts, CardRank.Four),
+							new Card(CardSuit.Diamonds, CardRank.Five),
+						}
+					}
+				}
+			};
+
+
+			// Act
+			game.CallGame();
+
+			// Assert
+			Assert.IsTrue(game.Players.FirstOrDefault().HasWinningHand);
+			Assert.IsFalse(game.Players.Skip(1).Take(2).Any(x => x.HasWinningHand));
+
+
+		}
+
+		[TestMethod]
+		public void CallGame_OnePairTie_Player3AceHighPairWins()
+		{
+
+			// Arrange
+			var game = new Game()
+			{
+				State = GameState.RiverDealt,
+
+				CommunityCards = new List<Card>() {
+					new Card(CardSuit.Clubs, CardRank.Nine),
+					new Card(CardSuit.Diamonds, CardRank.Ace),
+					new Card(CardSuit.Clubs, CardRank.King),
+					new Card(CardSuit.Hearts, CardRank.Eight),
+				},
+
+				Players = new List<Player>() {
+					new Player
+					{
+						Number = 1,
+						Cards = new List<Card>(){
+							new Card(CardSuit.Diamonds, CardRank.Four),
+							new Card(CardSuit.Clubs, CardRank.Eight),
+						}
+					},
+					new Player
+					{
+						Number = 2,
+						Cards = new List<Card>(){
+							new Card(CardSuit.Clubs, CardRank.Jack),
+							new Card(CardSuit.Spades, CardRank.Jack),
+						}
+					},
+					new Player
+					{
+						Number = 3,
+						Cards = new List<Card>(){
+							new Card(CardSuit.Clubs, CardRank.Ace),
+							new Card(CardSuit.Diamonds, CardRank.Three),
+						}
+					}
+				}
+			};
+
+
+			// Act
+			game.CallGame();
+
+			// Assert
+			Assert.IsTrue(game.Players[2].HasWinningHand);
+			Assert.IsFalse(game.Players.Take(2).Any(x => x.HasWinningHand));
+
+		}
+
 
 		#endregion
 

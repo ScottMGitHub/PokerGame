@@ -87,7 +87,7 @@ namespace PokerGame.Models
             var straigFlush = new StraightFlush(CommunityCards);
 
             // If the community cards deal a Royal flush or straight flush call the game;
-            if(royalFlush.HandExists || royalFlush.HandExists) {
+            if(royalFlush.HandExists || royalFlush.HandExists || straigFlush.HandExists || straigFlush.HandExists) {
                 CallGame();
             }
 

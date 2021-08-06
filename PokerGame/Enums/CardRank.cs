@@ -19,6 +19,9 @@ namespace PokerGame.Enums
 
     public enum CardRankAceHigh
 	{
-        Ace = 14,
+        // Give Ace arbitrarily high value of 100.
+        // 14 will not work when calulating total hand value
+        // as it could lead to an equal total hand value with none ace values
+        Ace = 100,
     }
 }
